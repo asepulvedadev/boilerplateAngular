@@ -25,11 +25,11 @@ function getEnvVar(key: string, defaultValue: string = ''): string {
 const supabaseConfig = {
   url: getEnvVar(
     'VITE_SUPABASE_URL',
-    'https://wunclqnjguunowexfkyg.supabase.co'
+    getEnvVar('SUPABASE_URL', 'https://wunclqnjguunowexfkyg.supabase.co')
   ),
   anonKey: getEnvVar(
     'VITE_SUPABASE_ANON_KEY',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1bmNscW5qZ3V1bm93ZXhma3lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MjAyMTQsImV4cCI6MjA3NjE5NjIxNH0.FaXvsMBBtRGaKA7Yo_WTBe0qAeF6jbxQSQm_juD9l_I'
+    getEnvVar('SUPABASE_ANON_KEY', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind1bmNscW5qZ3V1bm93ZXhma3lnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MjAyMTQsImV4cCI6MjA3NjE5NjIxNH0.FaXvsMBBtRGaKA7Yo_WTBe0qAeF6jbxQSQm_juD9l_I')
   ),
 };
 
@@ -43,7 +43,7 @@ const stripeConfig = {
 const apiConfig = {
   apiUrl: getEnvVar(
     'VITE_API_URL',
-    'https://wunclqnjguunowexfkyg.supabase.co'
+    getEnvVar('SUPABASE_URL', 'https://wunclqnjguunowexfkyg.supabase.co')
   ),
 };
 
