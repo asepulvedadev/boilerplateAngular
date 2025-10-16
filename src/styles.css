@@ -1,0 +1,80 @@
+/**
+ * ESTILOS GLOBALES - SaaS Boilerplate
+ * Tailwind CSS 4.0
+ */
+
+/* ===================================
+   1. TAILWIND CSS v4.0
+   =================================== */
+@import "tailwindcss";
+
+/* ===================================
+   2. ESTILOS BASE
+   =================================== */
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===================================
+   4. UTILIDADES PERSONALIZADAS
+   =================================== */
+
+/**
+ * Clase para contenedores mobile-first
+ */
+.container-saas {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-sm);
+}
+
+@media (min-width: 640px) {
+  .container-saas {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container-saas {
+    max-width: 768px;
+    padding: var(--spacing-md);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-saas {
+    max-width: 1024px;
+    padding: var(--spacing-lg);
+  }
+}
+
+/**
+ * Scroll suave para navegación
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+/**
+ * Reset de estilos para mejor compatibilidad
+ */
+* {
+  box-sizing: border-box;
+}
+
+/**
+ * Mejora de accesibilidad para focus
+ */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}

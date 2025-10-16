@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Problema con el pago - {{APP_NAME}}</title>
+  <style>
+    /* Reset de estilos */
+    body, table, td, a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    table, td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f3f4f6;
+    }
+
+    .email-wrapper {
+      width: 100%;
+      background-color: #f3f4f6;
+      padding: 20px 0;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .email-header {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .email-header .icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    .email-header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .email-content {
+      padding: 40px 30px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .email-content h2 {
+      color: #1f2937;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .email-content p {
+      margin: 16px 0;
+      font-size: 16px;
+      color: #6b7280;
+    }
+
+    /* Alerta urgente */
+    .urgent-alert {
+      background-color: #fee2e2;
+      border: 2px solid #ef4444;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .urgent-alert .icon {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    .urgent-alert h3 {
+      color: #991b1b;
+      font-size: 20px;
+      margin: 0 0 8px 0;
+    }
+
+    .urgent-alert .countdown {
+      font-size: 36px;
+      font-weight: 700;
+      color: #dc2626;
+      margin: 12px 0;
+    }
+
+    .urgent-alert p {
+      color: #7f1d1d;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+
+    /* Detalles del problema */
+    .problem-details {
+      background-color: #fef2f2;
+      border-left: 4px solid #ef4444;
+      padding: 16px;
+      margin: 24px 0;
+      border-radius: 4px;
+    }
+
+    .problem-details h3 {
+      color: #991b1b;
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .problem-details p {
+      color: #7f1d1d;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+
+    .problem-details code {
+      background-color: #fee2e2;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #991b1b;
+    }
+
+    /* Motivos comunes */
+    .common-reasons {
+      background-color: #fff7ed;
+      border: 1px solid #fed7aa;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .common-reasons h3 {
+      color: #9a3412;
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .common-reasons ul {
+      margin: 12px 0;
+      padding-left: 20px;
+      color: #78350f;
+    }
+
+    .common-reasons li {
+      margin: 8px 0;
+      font-size: 14px;
+    }
+
+    /* Botón de acción urgente */
+    .action-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .urgent-button {
+      display: inline-block;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 18px;
+      margin: 8px;
+      box-shadow: 0 4px 6px rgba(239, 68, 68, 0.4);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .secondary-button {
+      display: inline-block;
+      padding: 16px 32px;
+      background: #ffffff;
+      color: #ef4444 !important;
+      text-decoration: none;
+      border: 2px solid #ef4444;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 8px;
+    }
+
+    /* Pasos a seguir */
+    .steps-guide {
+      margin: 24px 0;
+    }
+
+    .steps-guide h3 {
+      color: #1f2937;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .step {
+      display: flex;
+      align-items: flex-start;
+      margin: 16px 0;
+      padding: 16px;
+      background-color: #f9fafb;
+      border-radius: 8px;
+      border-left: 4px solid #3b82f6;
+    }
+
+    .step .step-number {
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 18px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      flex-shrink: 0;
+    }
+
+    .step-content h4 {
+      color: #1f2937;
+      font-size: 16px;
+      margin: 0 0 6px 0;
+    }
+
+    .step-content p {
+      color: #6b7280;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Info adicional */
+    .info-box {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 4px;
+      margin: 24px 0;
+    }
+
+    .info-box p {
+      margin: 8px 0;
+      font-size: 14px;
+      color: #1e40af;
+    }
+
+    .email-footer {
+      background-color: #1f2937;
+      color: #9ca3af;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .email-footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+      }
+
+      .email-content {
+        padding: 30px 20px !important;
+      }
+
+      .email-header h1 {
+        font-size: 24px !important;
+      }
+
+      .urgent-alert .countdown {
+        font-size: 28px !important;
+      }
+
+      .urgent-button, .secondary-button {
+        display: block !important;
+        margin: 12px 0 !important;
+      }
+
+      .step {
+        flex-direction: column;
+      }
+
+      .step .step-number {
+        margin-bottom: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="email-container">
+
+      <!-- Header -->
+      <div class="email-header">
+        <div class="icon">⚠️</div>
+        <h1>Problema con tu pago</h1>
+      </div>
+
+      <!-- Contenido -->
+      <div class="email-content">
+        <h2>Acción requerida</h2>
+
+        <p>
+          Hola <strong>{{USER_NAME}}</strong>,
+        </p>
+
+        <p>
+          Intentamos procesar el pago de tu suscripción al plan
+          <strong>{{PLAN_NAME}}</strong> pero el cargo no pudo completarse.
+        </p>
+
+        <!-- Alerta urgente -->
+        <div class="urgent-alert">
+          <div class="icon">⏰</div>
+          <h3>Tu cuenta será suspendida en:</h3>
+          <div class="countdown">{{DAYS_UNTIL_SUSPENSION}} días</div>
+          <p>
+            <strong>Actualiza tu método de pago antes del {{SUSPENSION_DATE}}</strong><br>
+            para evitar la interrupción del servicio.
+          </p>
+        </div>
+
+        <!-- Detalles del problema -->
+        <div class="problem-details">
+          <h3>🔍 Detalles del problema:</h3>
+          <p><strong>Intento de cobro:</strong> {{PAYMENT_DATE}}</p>
+          <p><strong>Monto:</strong> ${{AMOUNT}} {{CURRENCY}}</p>
+          <p><strong>Método de pago:</strong> {{PAYMENT_METHOD}}</p>
+          <p><strong>Motivo del fallo:</strong> <code>{{ERROR_REASON}}</code></p>
+          <p><strong>Próximo intento:</strong> {{NEXT_RETRY_DATE}}</p>
+        </div>
+
+        <!-- Botón de acción urgente -->
+        <div class="action-buttons">
+          <a href="{{UPDATE_PAYMENT_URL}}" class="urgent-button">
+            💳 Actualizar método de pago
+          </a>
+          <a href="{{CUSTOMER_PORTAL_URL}}" class="secondary-button">
+            Ver detalles
+          </a>
+        </div>
+
+        <!-- Motivos comunes -->
+        <div class="common-reasons">
+          <h3>📋 Motivos comunes de fallo en pagos:</h3>
+          <ul>
+            <li><strong>Fondos insuficientes</strong> en la cuenta</li>
+            <li><strong>Tarjeta vencida</strong> o próxima a vencer</li>
+            <li><strong>Límite de crédito</strong> alcanzado</li>
+            <li><strong>Restricción bancaria</strong> o bloqueo de seguridad</li>
+            <li><strong>Información de la tarjeta</strong> incorrecta o desactualizada</li>
+            <li><strong>Cambio de banco</strong> o número de tarjeta</li>
+          </ul>
+        </div>
+
+        <!-- Pasos a seguir -->
+        <div class="steps-guide">
+          <h3>✅ Cómo resolver este problema:</h3>
+
+          <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>Accede al Portal del Cliente</h4>
+              <p>
+                Haz clic en el botón "Actualizar método de pago" o ingresa
+                directamente al Portal del Cliente.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>Actualiza tu información de pago</h4>
+              <p>
+                Agrega una nueva tarjeta o actualiza la información de tu
+                método de pago actual.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>Confirma el pago</h4>
+              <p>
+                Intentaremos procesar el pago nuevamente de forma automática
+                o puedes iniciar un reintento manual.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>Verifica la confirmación</h4>
+              <p>
+                Recibirás un email de confirmación una vez que el pago
+                se procese exitosamente.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Info adicional -->
+        <div class="info-box">
+          <p><strong>💡 ¿Qué sucede si no actualizo mi método de pago?</strong></p>
+          <p>
+            Si no actualizas tu método de pago antes del {{SUSPENSION_DATE}},
+            tu cuenta será suspendida temporalmente y perderás acceso a las
+            funcionalidades premium. Tus datos permanecerán seguros por {{GRACE_PERIOD}} días.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <p><strong>🔒 Seguridad de tus datos de pago</strong></p>
+          <p>
+            Toda la información de pago se procesa de forma segura a través de
+            Stripe, certificado PCI DSS Level 1. Nunca almacenamos los datos
+            completos de tu tarjeta en nuestros servidores.
+          </p>
+        </div>
+
+        <p style="margin-top: 30px;">
+          <strong>¿Necesitas ayuda?</strong><br>
+          Si tienes problemas para actualizar tu método de pago o crees que
+          este es un error, contacta a nuestro equipo de soporte respondiendo
+          a este email o visitando nuestro
+          <a href="{{SUPPORT_URL}}" style="color: #ef4444; font-weight: 600;">Centro de Ayuda</a>.
+        </p>
+
+        <p style="margin-top: 30px;">
+          Saludos,<br>
+          <strong>El equipo de facturación de {{APP_NAME}}</strong>
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="email-footer">
+        <p>
+          {{APP_NAME}} &copy; {{CURRENT_YEAR}}<br>
+          {{COMPANY_ADDRESS}}
+        </p>
+
+        <p style="font-size: 12px; color: #6b7280; margin-top: 20px;">
+          <a href="{{UPDATE_PAYMENT_URL}}">Actualizar pago</a> |
+          <a href="{{CUSTOMER_PORTAL_URL}}">Portal del Cliente</a> |
+          <a href="{{BILLING_FAQ_URL}}">Preguntas frecuentes</a> |
+          <a href="{{SUPPORT_URL}}">Soporte</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

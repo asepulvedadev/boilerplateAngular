@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verifica tu email - {{APP_NAME}}</title>
+  <style>
+    /* Reset de estilos */
+    body, table, td, a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    table, td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f3f4f6;
+    }
+
+    .email-wrapper {
+      width: 100%;
+      background-color: #f3f4f6;
+      padding: 20px 0;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .email-header {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .email-header .icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    .email-header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .email-content {
+      padding: 40px 30px;
+      color: #374151;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .email-content h2 {
+      color: #1f2937;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .email-content p {
+      margin: 16px 0;
+      font-size: 16px;
+      color: #6b7280;
+    }
+
+    /* Botón de verificación */
+    .verify-button {
+      display: inline-block;
+      padding: 18px 40px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 18px;
+      margin: 30px 0;
+      box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Código de verificación alternativo */
+    .verification-code {
+      background-color: #f3f4f6;
+      border: 2px dashed #d1d5db;
+      padding: 20px;
+      margin: 24px 0;
+      border-radius: 8px;
+    }
+
+    .verification-code code {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1f2937;
+      letter-spacing: 4px;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Enlace alternativo */
+    .alt-link {
+      background-color: #fef3c7;
+      border-left: 4px solid #f59e0b;
+      padding: 16px;
+      margin: 24px 0;
+      border-radius: 4px;
+      text-align: left;
+    }
+
+    .alt-link p {
+      margin: 8px 0;
+      font-size: 14px;
+      color: #92400e;
+    }
+
+    .alt-link a {
+      color: #d97706;
+      word-break: break-all;
+      font-size: 12px;
+    }
+
+    /* Advertencia de expiración */
+    .expiration-warning {
+      background-color: #fef2f2;
+      border: 1px solid #fecaca;
+      padding: 16px;
+      border-radius: 8px;
+      margin: 24px 0;
+    }
+
+    .expiration-warning p {
+      color: #991b1b;
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .email-footer {
+      background-color: #1f2937;
+      color: #9ca3af;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .email-footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+      }
+
+      .email-content {
+        padding: 30px 20px !important;
+      }
+
+      .email-header h1 {
+        font-size: 24px !important;
+      }
+
+      .verify-button {
+        display: block !important;
+        text-align: center;
+      }
+
+      .verification-code code {
+        font-size: 20px !important;
+        letter-spacing: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="email-container">
+
+      <!-- Header -->
+      <div class="email-header">
+        <div class="icon">✉️</div>
+        <h1>Verifica tu dirección de email</h1>
+      </div>
+
+      <!-- Contenido -->
+      <div class="email-content">
+        <h2>¡Un paso más!</h2>
+
+        <p>
+          Hola <strong>{{USER_NAME}}</strong>,
+        </p>
+
+        <p>
+          Gracias por registrarte en <strong>{{APP_NAME}}</strong>.
+          Para completar tu registro y garantizar la seguridad de tu cuenta,
+          necesitamos verificar tu dirección de email.
+        </p>
+
+        <!-- Botón principal de verificación -->
+        <center>
+          <a href="{{VERIFICATION_URL}}" class="verify-button">
+            ✓ Verificar mi email
+          </a>
+        </center>
+
+        <!-- Advertencia de expiración -->
+        <div class="expiration-warning">
+          <p>
+            ⏰ <strong>Este enlace expira en 24 horas.</strong><br>
+            Por tu seguridad, deberás solicitar un nuevo enlace después de ese tiempo.
+          </p>
+        </div>
+
+        <!-- Enlace alternativo para copiar -->
+        <div class="alt-link">
+          <p><strong>¿El botón no funciona?</strong></p>
+          <p>Copia y pega este enlace en tu navegador:</p>
+          <a href="{{VERIFICATION_URL}}">{{VERIFICATION_URL}}</a>
+        </div>
+
+        <p style="margin-top: 30px; font-size: 14px; color: #6b7280;">
+          Si no creaste una cuenta en {{APP_NAME}}, puedes ignorar este email
+          de forma segura.
+        </p>
+
+        <p style="margin-top: 30px;">
+          Saludos,<br>
+          <strong>El equipo de {{APP_NAME}}</strong>
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="email-footer">
+        <p>
+          {{APP_NAME}} &copy; {{CURRENT_YEAR}}<br>
+          {{COMPANY_ADDRESS}}
+        </p>
+
+        <p style="font-size: 12px; color: #6b7280; margin-top: 20px;">
+          Este es un email automático de seguridad.<br>
+          <a href="{{SUPPORT_URL}}">Contactar soporte</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

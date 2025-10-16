@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suscripción confirmada - {{APP_NAME}}</title>
+  <style>
+    /* Reset de estilos */
+    body, table, td, a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    table, td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f3f4f6;
+    }
+
+    .email-wrapper {
+      width: 100%;
+      background-color: #f3f4f6;
+      padding: 20px 0;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .email-header {
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .email-header .icon {
+      font-size: 64px;
+      margin-bottom: 16px;
+    }
+
+    .email-header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .email-content {
+      padding: 40px 30px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .email-content h2 {
+      color: #1f2937;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .email-content p {
+      margin: 16px 0;
+      font-size: 16px;
+      color: #6b7280;
+    }
+
+    /* Plan card */
+    .plan-card {
+      background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+      border: 2px solid #7c3aed;
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      text-align: center;
+    }
+
+    .plan-card .plan-name {
+      font-size: 32px;
+      font-weight: 700;
+      color: #5b21b6;
+      margin-bottom: 8px;
+    }
+
+    .plan-card .plan-price {
+      font-size: 48px;
+      font-weight: 700;
+      color: #7c3aed;
+      margin: 16px 0;
+    }
+
+    .plan-card .plan-price .currency {
+      font-size: 24px;
+      vertical-align: super;
+    }
+
+    .plan-card .plan-period {
+      font-size: 18px;
+      color: #6b7280;
+      margin-bottom: 16px;
+    }
+
+    /* Detalles de la suscripción */
+    .subscription-details {
+      background-color: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 24px 0;
+    }
+
+    .subscription-details table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .subscription-details td {
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .subscription-details td:first-child {
+      color: #6b7280;
+      font-weight: 500;
+    }
+
+    .subscription-details td:last-child {
+      text-align: right;
+      color: #1f2937;
+      font-weight: 600;
+    }
+
+    .subscription-details tr:last-child td {
+      border-bottom: none;
+    }
+
+    /* Features incluidas */
+    .features-list {
+      margin: 24px 0;
+    }
+
+    .features-list h3 {
+      color: #1f2937;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: flex-start;
+      margin: 12px 0;
+      padding: 12px;
+      background-color: #f0fdf4;
+      border-radius: 6px;
+    }
+
+    .feature-item .icon {
+      color: #10b981;
+      font-size: 20px;
+      margin-right: 12px;
+      flex-shrink: 0;
+    }
+
+    .feature-item p {
+      margin: 0;
+      color: #1f2937;
+      font-size: 15px;
+    }
+
+    /* Botones de acción */
+    .action-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .primary-button {
+      display: inline-block;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #7c3aed 0%, #5b21b6 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 8px;
+    }
+
+    .secondary-button {
+      display: inline-block;
+      padding: 16px 32px;
+      background: #ffffff;
+      color: #7c3aed !important;
+      text-decoration: none;
+      border: 2px solid #7c3aed;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 8px;
+    }
+
+    /* Info box */
+    .info-box {
+      background-color: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 16px;
+      border-radius: 4px;
+      margin: 24px 0;
+    }
+
+    .info-box p {
+      margin: 8px 0;
+      font-size: 14px;
+      color: #1e40af;
+    }
+
+    .email-footer {
+      background-color: #1f2937;
+      color: #9ca3af;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .email-footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+      }
+
+      .email-content {
+        padding: 30px 20px !important;
+      }
+
+      .email-header h1 {
+        font-size: 24px !important;
+      }
+
+      .plan-card .plan-name {
+        font-size: 24px !important;
+      }
+
+      .plan-card .plan-price {
+        font-size: 36px !important;
+      }
+
+      .primary-button, .secondary-button {
+        display: block !important;
+        margin: 12px 0 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="email-container">
+
+      <!-- Header -->
+      <div class="email-header">
+        <div class="icon">🎉</div>
+        <h1>¡Suscripción confirmada!</h1>
+      </div>
+
+      <!-- Contenido -->
+      <div class="email-content">
+        <h2>¡Gracias por tu confianza!</h2>
+
+        <p>
+          Hola <strong>{{USER_NAME}}</strong>,
+        </p>
+
+        <p>
+          Tu pago ha sido procesado exitosamente. Ya tienes acceso completo
+          a todas las funcionalidades premium de <strong>{{APP_NAME}}</strong>.
+        </p>
+
+        <!-- Plan Card -->
+        <div class="plan-card">
+          <div class="plan-name">{{PLAN_NAME}}</div>
+          <div class="plan-price">
+            <span class="currency">$</span>{{PLAN_PRICE}}
+          </div>
+          <div class="plan-period">{{PLAN_PERIOD}}</div>
+        </div>
+
+        <!-- Detalles de la suscripción -->
+        <div class="subscription-details">
+          <table>
+            <tr>
+              <td>Plan:</td>
+              <td>{{PLAN_NAME}}</td>
+            </tr>
+            <tr>
+              <td>Precio:</td>
+              <td>${{PLAN_PRICE}} / {{PLAN_PERIOD}}</td>
+            </tr>
+            <tr>
+              <td>Fecha de inicio:</td>
+              <td>{{START_DATE}}</td>
+            </tr>
+            <tr>
+              <td>Próxima renovación:</td>
+              <td>{{RENEWAL_DATE}}</td>
+            </tr>
+            <tr>
+              <td>Método de pago:</td>
+              <td>{{PAYMENT_METHOD}}</td>
+            </tr>
+            <tr>
+              <td>ID de transacción:</td>
+              <td>{{TRANSACTION_ID}}</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Features incluidas -->
+        <div class="features-list">
+          <h3>✨ Lo que incluye tu plan:</h3>
+
+          <div class="feature-item">
+            <div class="icon">✓</div>
+            <p><strong>{{FEATURE_1}}</strong></p>
+          </div>
+
+          <div class="feature-item">
+            <div class="icon">✓</div>
+            <p><strong>{{FEATURE_2}}</strong></p>
+          </div>
+
+          <div class="feature-item">
+            <div class="icon">✓</div>
+            <p><strong>{{FEATURE_3}}</strong></p>
+          </div>
+
+          <div class="feature-item">
+            <div class="icon">✓</div>
+            <p><strong>{{FEATURE_4}}</strong></p>
+          </div>
+
+          <div class="feature-item">
+            <div class="icon">✓</div>
+            <p><strong>Soporte prioritario 24/7</strong></p>
+          </div>
+        </div>
+
+        <!-- Botones de acción -->
+        <div class="action-buttons">
+          <a href="{{DASHBOARD_URL}}" class="primary-button">
+            Ir al Dashboard
+          </a>
+          <a href="{{CUSTOMER_PORTAL_URL}}" class="secondary-button">
+            Gestionar Suscripción
+          </a>
+        </div>
+
+        <!-- Info adicional -->
+        <div class="info-box">
+          <p><strong>📄 Factura y recibos</strong></p>
+          <p>
+            Recibirás un email separado con tu factura detallada.
+            También puedes descargar todas tus facturas desde el
+            <a href="{{CUSTOMER_PORTAL_URL}}" style="color: #1e40af; font-weight: 600;">Portal del Cliente</a>.
+          </p>
+        </div>
+
+        <div class="info-box">
+          <p><strong>🔄 Renovación automática</strong></p>
+          <p>
+            Tu suscripción se renovará automáticamente el {{RENEWAL_DATE}}.
+            Puedes cancelar en cualquier momento desde el Portal del Cliente
+            sin penalizaciones.
+          </p>
+        </div>
+
+        <p style="margin-top: 30px;">
+          <strong>¿Necesitas ayuda?</strong><br>
+          Nuestro equipo de soporte está disponible 24/7 para asistirte.
+          Simplemente responde a este email o visita nuestro
+          <a href="{{SUPPORT_URL}}" style="color: #7c3aed; font-weight: 600;">Centro de Ayuda</a>.
+        </p>
+
+        <p style="margin-top: 30px;">
+          Saludos,<br>
+          <strong>El equipo de {{APP_NAME}}</strong>
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="email-footer">
+        <p>
+          {{APP_NAME}} &copy; {{CURRENT_YEAR}}<br>
+          {{COMPANY_ADDRESS}}
+        </p>
+
+        <p style="font-size: 12px; color: #6b7280; margin-top: 20px;">
+          <a href="{{CUSTOMER_PORTAL_URL}}">Portal del Cliente</a> |
+          <a href="{{BILLING_URL}}">Facturación</a> |
+          <a href="{{SUPPORT_URL}}">Soporte</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>

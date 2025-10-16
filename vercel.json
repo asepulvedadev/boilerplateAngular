@@ -1,0 +1,48 @@
+{
+  "version": 2,
+  "name": "boilerplate-saas",
+  "buildCommand": "bun run build",
+  "outputDirectory": "dist/boilerplate-saas/browser",
+  "devCommand": "ng serve --port 4300",
+  "framework": null,
+  "installCommand": "bun install",
+  "build": {
+    "env": {
+      "VITE_SUPABASE_URL": "@vite_supabase_url",
+      "VITE_SUPABASE_ANON_KEY": "@vite_supabase_anon_key",
+      "VITE_STRIPE_PUBLISHABLE_KEY": "@vite_stripe_publishable_key",
+      "VITE_API_URL": "@vite_api_url"
+    }
+  },
+  "env": {
+    "VITE_SUPABASE_URL": "@vite_supabase_url",
+    "VITE_SUPABASE_ANON_KEY": "@vite_supabase_anon_key",
+    "VITE_STRIPE_PUBLISHABLE_KEY": "@vite_stripe_publishable_key",
+    "VITE_API_URL": "@vite_api_url"
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ]
+}

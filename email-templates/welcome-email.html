@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenido a {{APP_NAME}}</title>
+  <style>
+    /* Reset de estilos para clientes de email */
+    body, table, td, a {
+      -webkit-text-size-adjust: 100%;
+      -ms-text-size-adjust: 100%;
+    }
+    table, td {
+      mso-table-lspace: 0pt;
+      mso-table-rspace: 0pt;
+    }
+    img {
+      -ms-interpolation-mode: bicubic;
+      border: 0;
+      height: auto;
+      line-height: 100%;
+      outline: none;
+      text-decoration: none;
+    }
+
+    /* Estilos generales */
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100% !important;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f3f4f6;
+    }
+
+    /* Contenedor principal */
+    .email-wrapper {
+      width: 100%;
+      background-color: #f3f4f6;
+      padding: 20px 0;
+    }
+
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header con gradiente */
+    .email-header {
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .email-header h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .email-header .logo {
+      margin-bottom: 20px;
+    }
+
+    /* Contenido */
+    .email-content {
+      padding: 40px 30px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    .email-content h2 {
+      color: #1f2937;
+      font-size: 24px;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .email-content p {
+      margin: 16px 0;
+      font-size: 16px;
+    }
+
+    /* Botón CTA */
+    .cta-button {
+      display: inline-block;
+      padding: 16px 32px;
+      background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+      color: #ffffff !important;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 16px;
+      margin: 24px 0;
+      transition: transform 0.2s;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+    }
+
+    /* Tarjetas de características */
+    .features-grid {
+      margin: 30px 0;
+    }
+
+    .feature-card {
+      background-color: #f9fafb;
+      border-left: 4px solid #2563eb;
+      padding: 16px;
+      margin: 12px 0;
+      border-radius: 4px;
+    }
+
+    .feature-card h3 {
+      color: #1f2937;
+      font-size: 18px;
+      margin: 0 0 8px 0;
+    }
+
+    .feature-card p {
+      color: #6b7280;
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* Links útiles */
+    .useful-links {
+      background-color: #eff6ff;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 24px 0;
+    }
+
+    .useful-links h3 {
+      color: #1e40af;
+      font-size: 18px;
+      margin-top: 0;
+    }
+
+    .useful-links a {
+      color: #2563eb;
+      text-decoration: none;
+      display: block;
+      margin: 8px 0;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .email-footer {
+      background-color: #1f2937;
+      color: #9ca3af;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .email-footer a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .social-links {
+      margin: 20px 0;
+    }
+
+    .social-links a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #9ca3af;
+      text-decoration: none;
+    }
+
+    /* Responsive */
+    @media only screen and (max-width: 600px) {
+      .email-container {
+        width: 100% !important;
+        margin: 0 !important;
+        border-radius: 0 !important;
+      }
+
+      .email-content {
+        padding: 30px 20px !important;
+      }
+
+      .email-header h1 {
+        font-size: 24px !important;
+      }
+
+      .cta-button {
+        display: block !important;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-wrapper">
+    <div class="email-container">
+
+      <!-- Header -->
+      <div class="email-header">
+        <div class="logo">
+          <img src="{{LOGO_URL}}" alt="{{APP_NAME}} Logo" width="120" height="40">
+        </div>
+        <h1>¡Bienvenido a {{APP_NAME}}! 🎉</h1>
+      </div>
+
+      <!-- Contenido principal -->
+      <div class="email-content">
+        <h2>Hola {{USER_NAME}},</h2>
+
+        <p>
+          ¡Nos emociona tenerte con nosotros! Has dado el primer paso para transformar
+          la forma en que trabajas y te alegrarás de haberlo hecho.
+        </p>
+
+        <p>
+          Tu cuenta ha sido creada exitosamente y ya puedes empezar a disfrutar de todas
+          las funcionalidades que tenemos preparadas para ti.
+        </p>
+
+        <!-- CTA Principal -->
+        <center>
+          <a href="{{DASHBOARD_URL}}" class="cta-button">
+            Ir a mi Dashboard
+          </a>
+        </center>
+
+        <!-- Características principales -->
+        <div class="features-grid">
+          <div class="feature-card">
+            <h3>🚀 Empieza rápido</h3>
+            <p>
+              Nuestro onboarding te guiará paso a paso para que configures
+              todo en menos de 5 minutos.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>📊 Dashboard intuitivo</h3>
+            <p>
+              Visualiza métricas en tiempo real y toma decisiones informadas
+              desde el primer día.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>🔒 Seguridad garantizada</h3>
+            <p>
+              Tus datos están protegidos con encriptación de nivel empresarial
+              y autenticación de dos factores.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <h3>💬 Soporte 24/7</h3>
+            <p>
+              Nuestro equipo está aquí para ayudarte cuando lo necesites.
+              No dudes en contactarnos.
+            </p>
+          </div>
+        </div>
+
+        <!-- Links útiles -->
+        <div class="useful-links">
+          <h3>📚 Recursos útiles para empezar</h3>
+          <a href="{{DOCS_URL}}">→ Documentación completa</a>
+          <a href="{{SETTINGS_URL}}">→ Configurar mi cuenta</a>
+          <a href="{{TUTORIALS_URL}}">→ Tutoriales en video</a>
+          <a href="{{SUPPORT_URL}}">→ Centro de ayuda</a>
+        </div>
+
+        <p>
+          <strong>¿Necesitas ayuda?</strong><br>
+          Simplemente responde a este email y nuestro equipo te asistirá de inmediato.
+        </p>
+
+        <p style="margin-top: 30px;">
+          Saludos,<br>
+          <strong>El equipo de {{APP_NAME}}</strong>
+        </p>
+      </div>
+
+      <!-- Footer -->
+      <div class="email-footer">
+        <div class="social-links">
+          <a href="{{TWITTER_URL}}">Twitter</a> |
+          <a href="{{LINKEDIN_URL}}">LinkedIn</a> |
+          <a href="{{GITHUB_URL}}">GitHub</a>
+        </div>
+
+        <p>
+          {{APP_NAME}} &copy; {{CURRENT_YEAR}}<br>
+          {{COMPANY_ADDRESS}}
+        </p>
+
+        <p style="font-size: 12px; color: #6b7280; margin-top: 20px;">
+          Estás recibiendo este email porque te registraste en {{APP_NAME}}.<br>
+          <a href="{{UNSUBSCRIBE_URL}}" style="color: #60a5fa;">Cancelar suscripción</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+</body>
+</html>
