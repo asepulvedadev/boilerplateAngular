@@ -1,35 +1,37 @@
 /**
  * Environment de producción
  * Configuración para deploy en Vercel
+ *
+ * IMPORTANTE: Configurar estas variables en Vercel Dashboard:
+ * Settings > Environment Variables
  */
 export const environment = {
   production: true,
 
   /**
    * Supabase Configuration (Production)
-   * Variables de entorno en Vercel:
-   * - VITE_SUPABASE_URL
-   * - VITE_SUPABASE_ANON_KEY
+   * Reemplazar estos valores con tus credenciales de producción
+   * O usar file replacement en angular.json
    */
   supabase: {
-    url: import.meta.env['VITE_SUPABASE_URL'] || '',
-    anonKey: import.meta.env['VITE_SUPABASE_ANON_KEY'] || '',
+    url: 'https://your-project.supabase.co',
+    anonKey: 'your-production-anon-key',
   },
 
   /**
    * Stripe Configuration (Production)
-   * Variable de entorno: VITE_STRIPE_PUBLISHABLE_KEY
+   * Usar tu publishable key de producción
    */
   stripe: {
-    publishableKey: import.meta.env['VITE_STRIPE_PUBLISHABLE_KEY'] || '',
+    publishableKey: 'pk_live_...',
   },
 
   /**
    * Resend Configuration (servidor-side only)
-   * No exponer en el cliente
+   * No exponer en el cliente - se maneja en Edge Functions
    */
   resend: {
-    apiKey: '', // Se maneja en Edge Functions
+    apiKey: '', // Se configura en Supabase Edge Functions
   },
 
   /**
@@ -38,6 +40,6 @@ export const environment = {
   app: {
     name: 'SaaS Boilerplate',
     version: '1.0.0',
-    apiUrl: import.meta.env['VITE_API_URL'] || '',
+    apiUrl: 'https://your-project.supabase.co',
   },
 };
