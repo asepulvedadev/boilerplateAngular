@@ -1,0 +1,140 @@
+/**
+ * ESTILOS GLOBALES - SaaS Boilerplate
+ * Integración de Tailwind CSS 4.0 + Angular Material
+ */
+
+// ===================================
+// 1. ANGULAR MATERIAL (debe ir primero por @use)
+// ===================================
+@use '@angular/material' as mat;
+
+/**
+ * Tema de Angular Material 3
+ * Paleta personalizada para el SaaS
+ */
+html {
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$violet-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+// ===================================
+// 2. TAILWIND CSS 4.0
+// ===================================
+@import "tailwindcss";
+
+/**
+ * Tema personalizado Tailwind v4
+ * Usa @theme para definir variables CSS personalizadas
+ */
+@theme {
+  /* Colores del brand (sincronizados con Material) */
+  --color-primary: #2196f3;
+  --color-secondary: #673ab7;
+  --color-accent: #10b981;
+  --color-error: #f44336;
+  --color-warning: #ff9800;
+  --color-success: #4caf50;
+
+  /* Paleta de grises */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-500: #6b7280;
+  --color-gray-700: #374151;
+  --color-gray-900: #111827;
+
+  /* Espaciado mobile-first */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 1rem;      /* 16px */
+  --spacing-md: 1.5rem;    /* 24px */
+  --spacing-lg: 2rem;      /* 32px */
+  --spacing-xl: 3rem;      /* 48px */
+  --spacing-2xl: 4rem;     /* 64px */
+
+  /* Fuentes */
+  --font-sans: Roboto, system-ui, -apple-system, sans-serif;
+}
+
+// ===================================
+// 3. ESTILOS BASE
+// ===================================
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  /**
+   * Color scheme: light (default)
+   * Cambiar a 'dark' o 'light dark' para modo oscuro
+   */
+  color-scheme: light;
+
+  /* Variables de Material Design */
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+
+  /* Suavizado de fuentes */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// ===================================
+// 4. UTILIDADES PERSONALIZADAS
+// ===================================
+
+/**
+ * Clase para contenedores mobile-first
+ */
+.container-saas {
+  width: 100%;
+  margin: 0 auto;
+  padding: var(--spacing-sm);
+
+  @media (min-width: 640px) {
+    max-width: 640px;
+  }
+
+  @media (min-width: 768px) {
+    max-width: 768px;
+    padding: var(--spacing-md);
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 1024px;
+    padding: var(--spacing-lg);
+  }
+}
+
+/**
+ * Scroll suave para navegación
+ */
+html {
+  scroll-behavior: smooth;
+}
+
+/**
+ * Reset de estilos para mejor compatibilidad
+ */
+* {
+  box-sizing: border-box;
+}
+
+/**
+ * Mejora de accesibilidad para focus
+ */
+*:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
